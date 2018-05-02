@@ -1,0 +1,33 @@
+dist: trusty
+sudo: required
+language: generic
+os:
+ - linux
+ - osx
+ 
+env:
+   - VERBOSE=1
+ 
+# Only test direct pushes to master
+#
+branches:
+  only: 
+    - master
+
+script:
+   - mkdir build
+   - cd build
+   - cmake ..
+         
+notifications:
+  email:
+    recipients:
+      - shinynoseglasses@gmail.com
+    on_failure: always
+    
+cache:
+  ccache: true
+  directories:
+    - $HOME/Library/Caches/Homebrew
+
+    
